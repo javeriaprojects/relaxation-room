@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comfort Room</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom right, #fcefee, #e8f5e9);
+      color: #333;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .intro h1 {
+      font-size: 2.5rem;
+      color: #ff6f91;
+      margin-bottom: 20px;
+    }
+
+    .intro img {
+      width: 180px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .message-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 30px 20px;
+      max-width: 600px;
+      margin: 60px auto 0;
+      border: 2px solid #ffb6c1;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
+    }
+
+    .message-card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    button {
+      background-color: #ff6f91;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 40px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff8fa3;
+    }
+
+    .signature {
+      font-family: 'Patrick Hand', cursive;
+      font-size: 1.2rem;
+      margin-top: 40px;
+      color: #555;
+    }
+
+    .hearts {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 2rem;
+      animation: floatUp 3s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-60px); opacity: 0; }
+    }
+
+    .comfort-corner {
+      margin-top: 80px;
+      padding: 40px 30px;
+      background-color: #fff0f5;
+      border-radius: 12px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .comfort-corner h2 {
+      color: #ff6f91;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .comfort-corner ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .comfort-corner li {
+      margin: 12px 0;
+    }
+
+    .journal-box {
+      margin-top: 60px;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 12px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .journal-box h2 {
+      color: #ff6f91;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    .journal-box textarea {
+      width: 100%;
+      height: 120px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 1rem;
+      font-family: 'Quicksand', sans-serif;
+      resize: none;
+    }
+
+    .night-message {
+      margin-top: 60px;
+      padding: 20px;
+      background-color: #f3e5f5;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #6a4c93;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .whisper {
+      position: relative;
+      display: inline-block;
+      font-size: 2rem;
+      margin-top: 40px;
+      cursor: pointer;
+    }
+
+    .hidden-message {
+      visibility: hidden;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff0f5;
+      color: #6a4c93;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .whisper:hover .hidden-message {
+      visibility: visible;
+    }
+
+    .soft-quote {
+      opacity: 0;
+      transition: opacity 3s ease;
+      text-align: center;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #a1887f;
+      margin-top: 40px;
+    }
+
+    .if-reading-this {
+      display: none;
+      background-color: #fff8f0;
+      border-left: 4px solid #ffb6b9;
+      padding: 20px;
+      margin: 60px auto;
+      max-width: 600px;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: #6d4c41;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      animation: fadeInNote 2s ease forwards;
+    }
+
+    @keyframes fadeInNote {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      margin-top: 80px;
+      padding: 20px;
+      text-align: center;
+      font-size: 1rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section intro">
+    <h1>Heyyyy pookie!! 🧸🌸</h1>
+    <img src="bear-with-tulips.jpg" alt="Bear with Tulips" />
+  </div>
+
+  <div class="section message-card">
+    <p>
+      Hiii
+How are you? 🙂
+I made this for you… I just wanted to create something that would make you smile, 😁 especially because you’ve been feeling so stressed lately. I really hope it helps even a little. Honestly, at first, I was thinking, ‘Should I make it? What if you don’t like it?’ But then I thought, ‘No, I’ll just do it.’👉🏻👈🏻
+You know what? Whenever you share those little details about your life with me, it honestly makes me so happy because it shows you trust me♥. Thank you for that🎈. And please… try not to worry so much, okay?🫂
+You’re honestly doing so well. Just keep going, keep giving your best, and Insha’Allah, everything will turn out amazing
+💖And don’t worry, okay? Whatever Allah does will always be for the best.
+Just imagine I’m right there with you, holding your hand with one hand and gently resting the other under your chin, telling you…
+Don’t be stressed. If things are meant to be, they’ll be, okay🎀.And just focus on yourself ..patli na ho jana achi nhi lgti ...hehe....No matter what happens, I’m here for you. You’re never alone.🫂
+Allah always has the best plan for you—trust Him, and trust yourself.♥🪷
+    </p>
+
+    <button onclick="alert('You are loved. You are enough. You are magic.')">Click for a hug 💞</button>
+    <p class="signature">— Always here for you, Jaweria 💌</p>
+  </div>
+
+  <div class="comfort-corner">
+    <h2>Comfort Corner 🌸</h2>
+    <p>Here are a few gentle things you can do when the world feels heavy:</p>
+    <ul>
+      <li>🌿 Take 5 deep breaths—slowly, like you're hugging your heart.</li>
+      <li>🧸 Wrap yourself in a blanket and imagine you're being held.</li>
+      <li>📖 Write down one thing you're proud of today, even if it's tiny.</li>
+      <li>🎧 Play a song that feels like sunshine on your skin.</li>
+      <li>💌 Text someone who makes you feel safe, even if it's just “hi.”</li>
+    </ul>
+    <p class="signature">You deserve softness. You deserve peace. You deserve to feel loved.</p>
+  </div>
+
+  <div class="journal-box">
+    <h2>📝 Write What You're Feeling</h2>
+    <textarea placeholder="Type here... no one will see it but you. Let it out."></textarea>
+  </div>
+
+  <div class="night-message">
+    <p>🌙 It's late, pookie. You’ve done enough for today. Let your heart rest. Tomorrow will be gentler.</p>
+  </div>
+
+  <div class="section whisper">
+    🌼
+    <span class="hidden-message">You’re doing better than you think. I promise.</span>
+  </div>
+
+  <div class="soft-quote" id="softQuote">
+    “You are not behind. You are exactly where you need to be.”
+  </div>
+
+  <div class="if-reading-this" id="ifReadingThis">
+    <p>🕊️ If you’re reading this… I just want you to know that you’re my favorite person in the whole world. You don’t have to be perfect. You just have to be you. And that’s more than enough.</p>
+  </div>
+
+  <footer>
+    <p>Made with love by Jaweria 💖 </p>
+  </footer>
+
+  <div class="hearts">💖</div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("softQuote").style.opacity = 1;
+    }, 5000);
+
+    setTimeout(() => {
+      document.getElementById("ifReadingThis").style.display = "block";
+    }, 7000);
+  </script>
+
+</body>
+</html>
